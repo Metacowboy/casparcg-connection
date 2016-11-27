@@ -86,7 +86,7 @@ var Config;
             __extends(DecklinkConsumer, _super);
             function DecklinkConsumer() {
                 _super.apply(this, arguments);
-                this.type = "decklink";
+                this._type = "decklink";
                 this.device = 1;
                 this.embeddedAudio = "false";
                 this.channelLayout = "stereo";
@@ -134,7 +134,7 @@ var Config;
             __extends(BluefishConsumer, _super);
             function BluefishConsumer() {
                 _super.apply(this, arguments);
-                this.type = "Bluefish";
+                this._type = "Bluefish";
                 this.device = 1;
                 this.embeddedAudio = "false";
                 this.channelLayout = "stereo";
@@ -163,7 +163,7 @@ var Config;
             __extends(SystemAudioConsumer, _super);
             function SystemAudioConsumer() {
                 _super.apply(this, arguments);
-                this.type = "systemaudio";
+                this._type = "systemaudio";
                 this.channelLayout = "stereo";
                 this.latency = 200;
             }
@@ -184,7 +184,7 @@ var Config;
             __extends(ScreenConsumer, _super);
             function ScreenConsumer() {
                 _super.apply(this, arguments);
-                this.type = "screen";
+                this._type = "screen";
                 this.device = 0;
                 this.aspectRatio = "default";
                 this.stretch = "fill";
@@ -238,7 +238,7 @@ var Config;
             __extends(NewtekIvgaConsumer, _super);
             function NewtekIvgaConsumer() {
                 _super.apply(this, arguments);
-                this.type = "newtekivga";
+                this._type = "newtekivga";
                 this.channelLayout = "stereo"; // @todo: ns 2.0 only
                 this.provideSync = "true"; // @todo: ns 2.0 only
             }
@@ -260,7 +260,7 @@ var Config;
             __extends(FfmpegConsumer, _super);
             function FfmpegConsumer() {
                 _super.apply(this, arguments);
-                this.type = "ffmpeg";
+                this._type = "ffmpeg";
                 this.separateKey = "false";
                 this.monoStreams = "false";
             }
@@ -287,7 +287,7 @@ var Config;
             __extends(FileConsumer, _super);
             function FileConsumer() {
                 _super.apply(this, arguments);
-                this.type = "file";
+                this._type = "file";
                 this.vcodec = "libx264";
                 this.separateKey = "false";
             }
@@ -311,7 +311,7 @@ var Config;
             __extends(StreamConsumer, _super);
             function StreamConsumer() {
                 _super.apply(this, arguments);
-                this.type = "stream";
+                this._type = "stream";
             }
             __decorate([
                 typedjson_npm_1.JsonMember({ type: String })
@@ -330,7 +330,7 @@ var Config;
             __extends(SynctoConsumer, _super);
             function SynctoConsumer() {
                 _super.apply(this, arguments);
-                this.type = "syncto";
+                this._type = "syncto";
             }
             __decorate([
                 typedjson_npm_1.JsonMember({ type: Number, name: "channel-id" })
@@ -384,6 +384,9 @@ var Config;
                 enumerable: true,
                 configurable: true
             });
+            __decorate([
+                typedjson_npm_1.JsonMember({ type: String, isRequired: true })
+            ], Channel.prototype, "_type", void 0);
             __decorate([
                 typedjson_npm_1.JsonMember({ type: String, isRequired: true, name: "video-mode" })
             ], Channel.prototype, "videoMode", void 0);
@@ -444,25 +447,12 @@ var Config;
         }());
         v2xx.Controller = Controller;
         /** */
-        var PredefinedClient = (function () {
-            function PredefinedClient() {
-            }
-            __decorate([
-                typedjson_npm_1.JsonMember({ type: String, isRequired: true })
-            ], PredefinedClient.prototype, "address", void 0);
-            __decorate([
-                typedjson_npm_1.JsonMember({ type: Number, isRequired: true })
-            ], PredefinedClient.prototype, "port", void 0);
-            PredefinedClient = __decorate([
-                typedjson_npm_1.JsonObject
-            ], PredefinedClient);
-            return PredefinedClient;
-        }());
-        v2xx.PredefinedClient = PredefinedClient;
-        /** */
         var OscClient = (function () {
             function OscClient() {
             }
+            __decorate([
+                typedjson_npm_1.JsonMember({ type: String, isRequired: true })
+            ], OscClient.prototype, "_type", void 0);
             __decorate([
                 typedjson_npm_1.JsonMember({ type: String, isRequired: true })
             ], OscClient.prototype, "address", void 0);
@@ -532,6 +522,9 @@ var Config;
         var TemplateHost = (function () {
             function TemplateHost() {
             }
+            __decorate([
+                typedjson_npm_1.JsonMember({ type: String, isRequired: true })
+            ], TemplateHost.prototype, "_type", void 0);
             __decorate([
                 typedjson_npm_1.JsonMember({ type: String, isRequired: true, name: "video-mode" })
             ], TemplateHost.prototype, "videoMode", void 0);
@@ -872,7 +865,7 @@ var Config;
         var ChannelLayoutEnum = v21x.ChannelLayoutEnum;
     })(v21x = Config.v21x || (Config.v21x = {}));
     /**  */
-    var defaultChannel_2xx = { videoMode: "PAL", _consumers: [] };
+    var defaultChannel_2xx = { videoMode: "PAL", _consumers: [], _type: "channel" };
     var defaultAMCPController = { _type: "tcp", port: 5250, protocol: "AMCP" };
     var defaultLOGController = { _type: "tcp", port: 3250, protocol: "LOG" };
     // @todo: add interfaces

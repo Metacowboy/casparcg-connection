@@ -57,7 +57,7 @@ export declare namespace Config {
         }
         /** */
         class DecklinkConsumer extends Consumer {
-            type: string;
+            _type: string;
             device: number;
             keyDevice: Number;
             embeddedAudio: string;
@@ -70,7 +70,7 @@ export declare namespace Config {
         }
         /** */
         class BluefishConsumer extends Consumer {
-            type: string;
+            _type: string;
             device: number;
             embeddedAudio: string;
             channelLayout: string;
@@ -78,13 +78,13 @@ export declare namespace Config {
         }
         /** */
         class SystemAudioConsumer extends Consumer {
-            type: string;
+            _type: string;
             channelLayout: string;
             latency: number;
         }
         /** */
         class ScreenConsumer extends Consumer {
-            type: string;
+            _type: string;
             device: number;
             aspectRatio: string;
             stretch: string;
@@ -98,13 +98,13 @@ export declare namespace Config {
         }
         /** */
         class NewtekIvgaConsumer extends Consumer {
-            type: string;
+            _type: string;
             channelLayout: string;
             provideSync: string;
         }
         /** */
         class FfmpegConsumer extends Consumer {
-            type: string;
+            _type: string;
             path: String;
             args: String;
             separateKey: string;
@@ -112,25 +112,26 @@ export declare namespace Config {
         }
         /** */
         class FileConsumer extends Consumer {
-            type: string;
+            _type: string;
             path: String;
             vcodec: string;
             separateKey: string;
         }
         /** */
         class StreamConsumer extends Consumer {
-            type: string;
+            _type: string;
             path: String;
             args: String;
         }
         /** */
         class SynctoConsumer extends Consumer {
-            type: string;
+            _type: string;
             channelId: Number;
         }
         /** */
         class Channel {
             consumers?: Array<Consumer>;
+            _type: String;
             videoMode: string;
             straightAlphaOutput?: string;
             channelLayout?: string;
@@ -150,12 +151,8 @@ export declare namespace Config {
             protocol: String;
         }
         /** */
-        class PredefinedClient {
-            address: String;
-            port: number;
-        }
-        /** */
         class OscClient {
+            _type: string;
             address: String;
             port: number;
         }
@@ -175,6 +172,7 @@ export declare namespace Config {
         }
         /** */
         class TemplateHost {
+            _type: string;
             videoMode: string;
             filename: string;
             width: number;
