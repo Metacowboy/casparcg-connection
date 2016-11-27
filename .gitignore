@@ -1,6 +1,0 @@
-*
-!/src
-!/js
-!package.json
-!tsconfig.json
-!gulpfile.js
